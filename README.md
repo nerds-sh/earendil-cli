@@ -9,7 +9,7 @@ Cli app written in Elixir to ease the interaction with Elrond Smart Contracts
 ## Running
 * Clone this repository
 * Run `mix deps.get`
-* Run `mix earendil run <path_to_steps_json>
+* Run `mix earendil run <path_to_steps_json>`
 
 ## Steps 
 The steps that are to be run are to be defined inside a json file. Here's an example of how one such file might look like:
