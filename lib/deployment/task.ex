@@ -2,7 +2,7 @@ alias EarendilCli.Protocols.Task, as: Protocol
 alias EarendilCli.Deployment.Model, as: Model
 
 defimpl Protocol, for: Model do
-  alias EarendilCli.Builder, as: Builder
+  alias EarendilCli.Deployment.Builder, as: Builder
   import EarendilCli.Interaction.Parser
   import EarendilCli.Deployment.ContractAgent
 

@@ -1,4 +1,4 @@
-defmodule EarendilCli.Builder do
+defmodule EarendilCli.Deployment.Builder do
   defp make_cmd_options(path) do
     [
       cd: Path.expand(path),
