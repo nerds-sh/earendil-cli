@@ -3,6 +3,7 @@ alias EarendilCli.Query.Model, as: Model
 
 defimpl Protocol, for: Model do
   alias EarendilCli.Deployment.ContractAgent, as: Contract
+  alias EarendilCli.Common.Utils, as: Utils
 
   defp make_cmd_options do
     [
@@ -46,6 +47,6 @@ defimpl Protocol, for: Model do
   def run(task) do
     start_process(task) |> Task.await(:infinity)
     log(task)
-    :timer.sleep(task.delay)
+    Utils.apply_delay(task)
   end
 end
