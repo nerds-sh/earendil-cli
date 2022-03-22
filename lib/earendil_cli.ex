@@ -12,7 +12,6 @@ defmodule EarendilCli do
 
     run context do
       register_supervisor()
-      IO.inspect(context[:path])
       steps = parse(context[:path])
       run_steps(steps)
     end
