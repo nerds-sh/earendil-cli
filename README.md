@@ -1,21 +1,66 @@
-# Script
+# The Earendil Cli
+Cli app written in Elixir to ease the interaction with Elrond Smart Contracts
 
-**TODO: Add description**
+## Requirements
+* `erdpy` - installed and added to the path
+* `erlang` - installed and added to the path
+* `elixir` - installed and added to the path
 
-## Installation
+## Running
+* Clone this repository
+* Run `mix deps.get`
+* Run `mix earendil run <path_to_steps_json>
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `script` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:script, "~> 0.1.0"}
-  ]
-end
+## Steps 
+The steps that are to be run are to be defined inside a json file. Here's an example of how one such file might look like:
+```json
+{
+	"config": {
+		"pem": "~/devnet-wallet.pem",
+		"proxy": "https://testnet-api.elrond.com",
+		"chain": "T"
+	},
+	"steps": [
+		{
+			"type": "deploy",
+			"options": {
+				"path": "~/src/nerds/carpathian/raffle",
+				"arguments": "0x0000000000000000000100000000000000000000000000000000000010ffffff",
+				"gas_limit": 600000000,
+				"delay": 10000
+			}
+		},
+		{
+			"type": "transaction",
+			"options": {
+				"gas_limit": 20000000,
+				"function": "pause",
+				"delay": 10000
+			}
+		},
+		{
+			"type": "transaction",
+			"options": {
+				"arguments": "0x623a315b",
+				"gas_limit": 20000000,
+				"function": "setNewDeadline",
+				"delay": 10000
+			}
+		},
+		{
+			"type": "transaction",
+			"options": {
+				"gas_limit": 20000000,
+				"function": "unpause",
+				"delay": 10000
+			}
+    },
+		{
+			"type": "query",
+			"options": {
+				"function": "getWinners"
+			}
+		}
+	]
+}
 ```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/script](https://hexdocs.pm/script).
-

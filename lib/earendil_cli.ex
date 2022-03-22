@@ -1,19 +1,22 @@
 defmodule EarendilCli do
-  import ShorterMaps
-  import EarendilCli.Startup
   import EarendilCli.Step.Parser
-  alias EarendilCli.Step.Handlers, as: Handlers
+  use EarendilCli.Setup
 
-  defp run_steps(~M{config, steps}) do
-    handle_step = &Handlers.handle_step/2
+  command :run do
+    description "Runs a series of steps"
+    long_description """
+      Takes a series of steps declared in a JSON format and runs them
+    """
 
-    steps
-      |> Enum.each(fn step -> handle_step.(config, step) end)
-  end
+    argument :path
 
-  def run do
-    register_supervisor()
-    steps = parse("~/steps.json")
-    run_steps(steps)
+    run context do
+      register_supervisor()
+      IO.inspect(context[:path])
+      steps = parse(context[:path])
+      run_steps(steps)
+    end
   end
 end
+
+ExCLI.run(EarendilCli)
