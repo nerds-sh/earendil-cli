@@ -12,7 +12,7 @@ defmodule EarendilCli do
   end
 
   def run do
-    register_supervisors()
+    register_supervisor()
     steps = parse("~/steps.json")
     run_steps(steps)
   end

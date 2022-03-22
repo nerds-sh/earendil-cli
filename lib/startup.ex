@@ -1,5 +1,5 @@
 defmodule EarendilCli.Startup do
-  def register_supervisors() do
+  def register_supervisor() do
     children = [
       {Task.Supervisor, name: EarendilCli.Task.Supervisor},
     ]
