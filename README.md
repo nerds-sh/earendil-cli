@@ -54,13 +54,35 @@ The steps that are to be run are to be defined inside a json file. Here's an exa
 				"function": "unpause",
 				"delay": 10000
 			}
-    },
+    	},
 		{
 			"type": "query",
 			"options": {
 				"function": "getWinners"
 			}
+		},
+		{
+			"type": "test",
+			"options": {
+				"path": "~/test-module.ex"
+			}
 		}
 	]
 }
+```
+
+## Tests
+Using a `test` step allows writing custom tests using [ExUnit]("https://hexdocs.pm/ex_unit/1.12/ExUnit.html"). Getting the context can be done using the `Context.get()` function, with the `Context` module being injected at runtime. An example test could look like this:
+```elixir
+defmodule TestModule do
+  use ExUnit.Case
+
+	test "Proxy is correct" do
+		assert Context.get()[:proxy] == "https://testnet-api.elrond.com"
+	end
+
+	test "Chain id is correct" do
+		assert Context.get()[:chain] == "T"
+	end
+end
 ```
