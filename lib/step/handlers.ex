@@ -3,6 +3,7 @@ defmodule EarendilCli.Step.Handlers do
   alias EarendilCli.Deployment.Model, as: Deployment
   alias EarendilCli.Transaction.Model, as: Transaction
   alias EarendilCli.Query.Model, as: Query
+  alias EarendilCli.Test.Model, as: Test
 
   def handle_step(config, %{type: "deploy"} = step) do
     parameter = Map.put(step.options, :config, config)
@@ -20,5 +21,11 @@ defmodule EarendilCli.Step.Handlers do
     parameter = Map.put(step.options, :config, config)
 
     Task.run(struct(Query, parameter))
+  end
+
+  def handle_step(config, %{type: "test"} = step) do
+    parameter = Map.put(step.options, :config, config)
+
+    Task.run(struct(Test, parameter))
   end
 end

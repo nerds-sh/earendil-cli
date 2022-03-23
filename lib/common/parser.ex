@@ -1,10 +1,5 @@
 defmodule EarendilCli.Common.Parser do
-  defp read_file(path) do
-    case File.read(Path.expand(path)) do
-      {:ok, body} -> body
-      {:error, reason} -> IO.puts("Error: #{reason}")
-    end
-  end
+  import EarendilCli.Common.Utils
 
   defp decode(json, mapper) do
     case Poison.decode(json, as: mapper.(), keys: :atoms) do
