@@ -30,7 +30,6 @@ defimpl Protocol, for: Model do
 
     args ++ [
       "--proxy=#{task.config.proxy}",
-      "--send",
     ]
   end
 
