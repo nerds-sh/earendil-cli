@@ -7,6 +7,7 @@ defimpl Protocol, for: Model do
 
   defp make_cmd_options do
     [
+      into: IO.stream(),
       stderr_to_stdout: true,
       parallelism: true
     ]
