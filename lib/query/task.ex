@@ -2,7 +2,7 @@ alias EarendilCli.Protocols.Task, as: Protocol
 alias EarendilCli.Query.Model, as: Model
 
 defimpl Protocol, for: Model do
-  alias EarendilCli.Deployment.ContractAgent, as: Contract
+  alias EarendilCli.Query.Arguments, as: Arguments
   alias EarendilCli.Common.Utils, as: Utils
 
   defp make_cmd_options do
@@ -13,28 +13,8 @@ defimpl Protocol, for: Model do
     ]
   end
 
-  defp add_step_args(%{arguments: step_args}, args) do
-    if not is_nil(step_args), do: args ++ ["--arguments=#{step_args}"], else: args
-  end
-
-  defp make_arguments(task) do
-    args = [
-      "--verbose",
-      "contract",
-      "query",
-      Contract.get(),
-      "--function=#{task.function}",
-    ]
-
-    args = add_step_args(task, args)
-
-    args ++ [
-      "--proxy=#{task.config.proxy}",
-    ]
-  end
-
   defp start_process(task) do
-    function = fn -> System.cmd("erdpy", make_arguments(task), make_cmd_options()) end
+    function = fn -> System.cmd("erdpy", Arguments.make(task), make_cmd_options()) end
 
     Task.Supervisor.async(EarendilCli.Task.Supervisor, function)
   end
