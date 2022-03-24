@@ -15,14 +15,6 @@ defmodule EarendilCli.Transaction.Arguments do
       |> add_value(task)
   end
 
-  @spec make(%{
-          :arguments => any,
-          :config => atom | %{:chain => any, :pem => any, :proxy => any, optional(any) => any},
-          :function => any,
-          :gas_limit => any,
-          :value => any,
-          optional(any) => any
-        }) :: [...]
   def make(task) do
     args = [
       "--verbose",
