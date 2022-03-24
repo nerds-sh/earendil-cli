@@ -3,6 +3,7 @@ alias EarendilCli.Deployment.Model, as: Model
 
 defimpl Protocol, for: Model do
   alias EarendilCli.Deployment.Builder, as: Builder
+  alias EarendilCli.Deployment.Arguments, as: Arguments
   import EarendilCli.Interaction.Parser
   import EarendilCli.Deployment.ContractAgent
 
@@ -14,25 +15,8 @@ defimpl Protocol, for: Model do
     ]
   end
 
-  defp make_arguments(task) do
-    [
-      "--verbose",
-      "contract",
-      "deploy",
-      "--project=.",
-      "--recall-nonce",
-      "--gas-limit=#{task.gas_limit}",
-      "--pem=#{task.config.pem}",
-      "--arguments=#{task.arguments}",
-      "--send",
-      "--outfile=interaction.json",
-      "--proxy=#{task.config.proxy}",
-      "--chain=#{task.config.chain}"
-    ]
-  end
-
   defp start_process(task) do
-    function = fn -> System.cmd("erdpy", make_arguments(task), make_cmd_options(task.path)) end
+    function = fn -> System.cmd("erdpy", Arguments.make(task), make_cmd_options(task.path)) end
 
     Task.Supervisor.async(EarendilCli.Task.Supervisor, function)
   end
