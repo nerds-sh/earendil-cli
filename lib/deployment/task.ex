@@ -9,7 +9,7 @@ defimpl Protocol, for: Model do
 
   defp make_cmd_options(path) do
     [
-      cd: Path.expand(path),
+      cd: path,
       stderr_to_stdout: true,
       parallelism: true
     ]
