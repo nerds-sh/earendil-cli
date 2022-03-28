@@ -12,6 +12,9 @@ defmodule EarendilCli.Common.Path do
   end
 
   def expand(path) do
-    Path.expand(path, get())
+    case Path.type(path) do
+      :relative -> Path.expand(path, get())
+      :absolute -> Path.expand(path)
+    end
   end
 end
