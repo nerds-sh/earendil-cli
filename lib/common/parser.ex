@@ -4,7 +4,7 @@ defmodule EarendilCli.Common.Parser do
   defp decode(json, mapper) do
     case Poison.decode(json, as: mapper.(), keys: :atoms) do
       {:ok, json} -> json
-      {:error, reason} -> IO.puts("Error: #{reason}")
+      {_, reason} -> IO.puts("Error: #{reason}")
     end
   end
 

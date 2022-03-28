@@ -1,5 +1,6 @@
 defmodule EarendilCli.Transaction.Arguments do
   alias EarendilCli.Deployment.ContractAgent, as: Contract
+  alias EarendilCli.Common.Path, as: RelativePath
 
   defp add_arguments(args, %{arguments: arguments}) do
     if not is_nil(arguments), do: args ++ ["--arguments=#{arguments}"], else: args
@@ -32,7 +33,7 @@ defmodule EarendilCli.Transaction.Arguments do
       "--recall-nonce",
       "--send",
       "--chain=#{task.config.chain}",
-      "--pem=#{task.config.pem}"
+      "--pem=#{RelativePath.expand(task.config.pem)}"
     ]
   end
 end

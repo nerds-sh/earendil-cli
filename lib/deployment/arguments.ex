@@ -1,4 +1,6 @@
 defmodule EarendilCli.Deployment.Arguments do
+  alias EarendilCli.Common.Path, as: Path
+
   def make(task) do
     [
       "--verbose",
@@ -7,7 +9,7 @@ defmodule EarendilCli.Deployment.Arguments do
       "--project=.",
       "--recall-nonce",
       "--gas-limit=#{task.gas_limit}",
-      "--pem=#{task.config.pem}",
+      "--pem=#{Path.expand(task.config.pem)}",
       "--arguments=#{task.arguments}",
       "--send",
       "--outfile=interaction.json",

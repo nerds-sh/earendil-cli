@@ -1,5 +1,6 @@
 defmodule EarendilCli do
   import EarendilCli.Step.Parser
+  alias EarendilCli.Common.Path, as: Path
   use EarendilCli.Setup
 
   command :run do
@@ -12,6 +13,7 @@ defmodule EarendilCli do
 
     run context do
       register_supervisor()
+      Path.register(context[:path])
       steps = parse(context[:path])
       run_steps(steps)
     end

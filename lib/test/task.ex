@@ -14,7 +14,7 @@ defimpl Protocol, for: Model do
   def run(task) do
     ExUnit.start()
     Context.set(task.config)
-    content = Code.string_to_quoted(read_file(task.path))
+    content = Code.string_to_quoted(read_file(task.path, :relative))
     Module.create(TestModule, content, make_env())
   end
 end

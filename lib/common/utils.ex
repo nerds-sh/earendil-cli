@@ -1,9 +1,19 @@
 defmodule EarendilCli.Common.Utils do
-  def read_file(path) do
-    case File.read(Path.expand(path)) do
+  alias EarendilCli.Common.Path, as: RelativePath
+
+  defp read(path) do
+    case File.read(path) do
       {:ok, body} -> body
-      {:error, reason} -> IO.puts("Error: #{reason}")
+      {_, reason} -> IO.puts("Error: #{reason}")
     end
+  end
+
+  def read_file(path) do
+    Path.expand(path) |> read
+  end
+
+  def read_file(path, :relative) do
+    RelativePath.expand(path) |> read
   end
 
   def apply_delay(task) do

@@ -4,12 +4,13 @@ alias EarendilCli.Deployment.Model, as: Model
 defimpl Protocol, for: Model do
   alias EarendilCli.Deployment.Builder, as: Builder
   alias EarendilCli.Deployment.Arguments, as: Arguments
+  alias EarendilCli.Common.Path, as: RelativePath
   import EarendilCli.Interaction.Parser
   import EarendilCli.Deployment.ContractAgent
 
   defp make_cmd_options(path) do
     [
-      cd: path,
+      cd: RelativePath.expand(path),
       stderr_to_stdout: true,
       parallelism: true
     ]

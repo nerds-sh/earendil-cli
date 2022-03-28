@@ -1,7 +1,9 @@
 defmodule EarendilCli.Deployment.Builder do
+  alias EarendilCli.Common.Path, as: RelativePath
+
   defp make_cmd_options(path) do
     [
-      cd: path,
+      cd: RelativePath.expand(path),
       stderr_to_stdout: true,
       parallelism: true
     ]
