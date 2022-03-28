@@ -30,7 +30,8 @@ defimpl Protocol, for: Model do
   def run(task) do
     Builder.run(task.path)
 
-    start_process(task) |> Task.await(:infinity)
+    shite = start_process(task) |> Task.await(:infinity)
+    IO.inspect(shite)
 
     output = parse(task)
     log_result(output)
