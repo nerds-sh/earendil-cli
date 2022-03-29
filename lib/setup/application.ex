@@ -1,6 +1,11 @@
 defmodule EarendilCli.Setup.Application do
   import ShorterMaps
   alias EarendilCli.Step.Handlers, as: Handlers
+  alias EarendilCli.Common.Context, as: Context
+
+  def register_context() do
+    Context.initialize()
+  end
 
   def register_supervisor() do
     children = [

@@ -13,6 +13,7 @@ defmodule EarendilCli do
 
     run context do
       register_supervisor()
+      register_context()
       Path.register(context[:path])
       steps = parse(context[:path])
       run_steps(steps)

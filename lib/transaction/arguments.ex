@@ -18,7 +18,6 @@ defmodule EarendilCli.Transaction.Arguments do
 
   def make(task) do
     args = [
-      "--verbose",
       "contract",
       "call",
       Contract.get(),

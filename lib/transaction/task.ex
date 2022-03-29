@@ -4,12 +4,13 @@ alias EarendilCli.Transaction.Model, as: Model
 defimpl Protocol, for: Model do
   alias EarendilCli.Transaction.Arguments, as: Arguments
   alias EarendilCli.Common.Utils, as: Utils
+  alias EarendilCli.Common.Result, as: Result
+  alias EarendilCli.Transaction.Logger, as: Logger
 
   defp make_cmd_options do
     [
       stderr_to_stdout: true,
       parallelism: true,
-      into: IO.stream()
     ]
   end
 
@@ -19,14 +20,13 @@ defimpl Protocol, for: Model do
     Task.Supervisor.async(EarendilCli.Task.Supervisor, function)
   end
 
-  defp log(task) do
-    IO.puts("Transaction sent successfully!")
-    IO.puts("\tCalled function: #{task.function}")
-  end
-
   def run(task) do
-    start_process(task) |> Task.await(:infinity)
-    log(task)
+    start_process(task)
+      |> Task.await(:infinity)
+      |> Result.parse
+      |> Result.register(task.function)
+
     Utils.apply_delay(task)
+    Logger.log(task)
   end
 end

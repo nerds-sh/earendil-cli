@@ -6,14 +6,13 @@ defimpl Protocol, for: Model do
   import EarendilCli.Common.Utils
 
   defp make_env() do
-    alias EarendilCli.Test.Context, as: Context
+    alias EarendilCli.Common.Context, as: Context
 
     __ENV__
   end
 
   def run(task) do
     ExUnit.start()
-    Context.set(task.config)
     content = Code.string_to_quoted(read_file(task.path, :relative))
     Module.create(TestModule, content, make_env())
   end

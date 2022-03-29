@@ -19,4 +19,8 @@ defmodule EarendilCli.Common.Utils do
   def apply_delay(task) do
     if not is_nil(task.delay), do: :timer.sleep(task.delay)
   end
+
+  def green_text(message), do: "#{IO.ANSI.green()}#{message}#{IO.ANSI.reset()}"
+
+  def yellow_text(message), do: "#{IO.ANSI.yellow()}#{message}#{IO.ANSI.reset()}"
 end
