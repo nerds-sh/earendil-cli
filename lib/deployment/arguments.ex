@@ -1,16 +1,21 @@
 defmodule EarendilCli.Deployment.Arguments do
   alias EarendilCli.Common.Path, as: Path
 
+  defp add_arguments(args, %{arguments: arguments}) do
+    if not is_nil(arguments), do: args ++ ["--arguments=#{arguments}"], else: args
+  end
+
   def make(task) do
-    [
-      "--verbose",
+    args = [
       "contract",
       "deploy",
       "--project=.",
       "--recall-nonce",
       "--gas-limit=#{task.gas_limit}",
       "--pem=#{Path.expand(task.config.pem)}",
-      "--arguments=#{task.arguments}",
+    ]
+
+    add_arguments(args, task) ++ [
       "--send",
       "--outfile=interaction.json",
       "--proxy=#{task.config.proxy}",

@@ -6,7 +6,6 @@ defmodule EarendilCli.Interaction.Parser do
 
   def parse(task) do
     mapper = fn ->  ~M{%Interaction} end
-
     raw = parse(RelativePath.expand("#{task.path}/interaction.json"), mapper)
 
     ~M{contract: raw.contractAddress, hash: raw.emittedTransactionHash}
