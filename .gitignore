@@ -28,3 +28,5 @@ script-*.tar
 # Ide stuff
 .elixir_ls
 .vscode
+.idea
+earendil_cli.iml
