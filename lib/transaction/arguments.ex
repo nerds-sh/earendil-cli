@@ -1,6 +1,7 @@
 defmodule EarendilCli.Transaction.Arguments do
   alias EarendilCli.Deployment.ContractAgent, as: Contract
   alias EarendilCli.Common.Path, as: RelativePath
+  alias EarendilCli.Config.Agent, as: Config
 
   defp add_arguments(args, %{arguments: arguments}) do
     if not is_nil(arguments), do: args ++ ["--arguments=#{arguments}"], else: args
@@ -17,6 +18,8 @@ defmodule EarendilCli.Transaction.Arguments do
   end
 
   def make(task) do
+	  config = Config.get()
+
     args = [
       "contract",
       "call",
@@ -28,11 +31,11 @@ defmodule EarendilCli.Transaction.Arguments do
 
     args ++ [
       "--gas-limit=#{task.gas_limit}",
-      "--proxy=#{task.config.proxy}",
+      "--proxy=#{config.proxy}",
       "--recall-nonce",
       "--send",
-      "--chain=#{task.config.chain}",
-      "--pem=#{RelativePath.expand(task.config.pem)}"
+      "--chain=#{config.chain}",
+      "--pem=#{RelativePath.expand(config.pem)}"
     ]
   end
 end

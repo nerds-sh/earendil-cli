@@ -1,31 +1,17 @@
 defmodule EarendilCli.Step.Handlers do
-  alias EarendilCli.Protocols.Task, as: Task
-  alias EarendilCli.Deployment.Model, as: Deployment
-  alias EarendilCli.Transaction.Model, as: Transaction
-  alias EarendilCli.Query.Model, as: Query
-  alias EarendilCli.Test.Model, as: Test
+	alias EarendilCli.Protocols.Task, as: Task
+	alias EarendilCli.Deployment.Model, as: Deployment
+	alias EarendilCli.Transaction.Model, as: Transaction
+	alias EarendilCli.Query.Model, as: Query
+	alias EarendilCli.Test.Model, as: Test
 
-  def handle_step(config, %{type: "deploy"} = step) do
-    parameter = Map.put(step.options, :config, config)
+	defp run(model, options), do: Task.run(struct(model, options))
 
-    Task.run(struct(Deployment, parameter))
-  end
+	def handle_step(%{type: "deploy"} = step), do: run(Deployment, step.options)
 
-  def handle_step(config, %{type: "transaction"} = step) do
-    parameter = Map.put(step.options, :config, config)
+	def handle_step(%{type: "transaction"} = step), do: run(Transaction, step.options)
 
-    Task.run(struct(Transaction, parameter))
-  end
+	def handle_step(%{type: "query"} = step), do: run(Query, step.options)
 
-  def handle_step(config, %{type: "query"} = step) do
-    parameter = Map.put(step.options, :config, config)
-
-    Task.run(struct(Query, parameter))
-  end
-
-  def handle_step(config, %{type: "test"} = step) do
-    parameter = Map.put(step.options, :config, config)
-
-    Task.run(struct(Test, parameter))
-  end
+	def handle_step(%{type: "test"} = step), do: run(Test, step.options)
 end

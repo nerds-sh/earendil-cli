@@ -1,6 +1,7 @@
 defmodule EarendilCli.Transaction.Status.Getter do
   alias EarendilCli.Common.Context, as: Context
   alias EarendilCli.Common.Result, as: Result
+  alias EarendilCli.Config.Agent, as: Config
 
   defp get_tx_hash(called_function) do
     Context.get(called_function)
@@ -10,8 +11,9 @@ defmodule EarendilCli.Transaction.Status.Getter do
 
   defp make_arguments(function) do
     default = ["tx", "get", "--hash"]
+    config = Config.get()
 
-    default ++ [get_tx_hash(function)]
+    default ++ [get_tx_hash(function)] ++ ["--proxy", "#{config.proxy}"]
   end
 
   defp extract_transaction(transaction) do

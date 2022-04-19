@@ -30,3 +30,6 @@ script-*.tar
 .vscode
 .idea
 earendil_cli.iml
+
+# Escripts
+earendil_cli

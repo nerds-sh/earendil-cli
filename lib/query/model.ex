@@ -1,3 +1,3 @@
 defmodule EarendilCli.Query.Model do
-  defstruct [:function, :arguments, :config, :delay]
+  defstruct [:function, :arguments, :delay]
 end

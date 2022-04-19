@@ -2,6 +2,7 @@ defmodule EarendilCli.Setup.Application do
   import ShorterMaps
   alias EarendilCli.Step.Handlers, as: Handlers
   alias EarendilCli.Common.Context, as: Context
+  alias EarendilCli.Config.Agent, as: ConfigAgent
 
   def register_context() do
     Context.initialize()
@@ -18,9 +19,10 @@ defmodule EarendilCli.Setup.Application do
   end
 
   def run_steps(~M{config, steps}) do
-    handle_step = &Handlers.handle_step/2
+    handle_step = &Handlers.handle_step/1
+    ConfigAgent.set(config)
 
     steps
-    |> Enum.each(fn step -> handle_step.(config, step) end)
+    |> Enum.each(handle_step)
   end
 end
