@@ -9,13 +9,12 @@ defmodule EarendilCli.Common.Result do
 
   def parse({result, 0}) do
     String.split(result, ~r{\n})
-      |> filter
-      |> Enum.join
-      |> Poison.decode!(keys: :atoms)
+    |> filter
+    |> Enum.join()
+    |> Poison.decode!(keys: :atoms)
   end
 
   def register(value, function) do
     Context.update(String.to_atom(function), value)
   end
-
 end

@@ -4,12 +4,13 @@ defmodule EarendilCli do
   use EarendilCli.Setup
 
   command :run do
-    description "Runs a series of steps"
-    long_description """
-      Takes a series of steps declared in a JSON format and runs them
-    """
+    description("Runs a series of steps")
 
-    argument :path
+    long_description("""
+      Takes a series of steps declared in a JSON format and runs them
+    """)
+
+    argument(:path)
 
     run context do
       register_supervisor()

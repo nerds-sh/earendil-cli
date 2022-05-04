@@ -16,7 +16,7 @@ defmodule EarendilCli.Query.Logger do
 
   def log(%{function: function}) do
     get_result(function)
-      |> extract_result
-      |> dispay(function)
+    |> extract_result
+    |> dispay(function)
   end
 end

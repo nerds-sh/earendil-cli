@@ -5,8 +5,8 @@ defmodule EarendilCli.Transaction.Logger do
 
   defp get_tx_hash(called_function) do
     Context.get(called_function)
-			|> Map.get(:result)
-			|> Map.get(:emittedTransactionHash)
+    |> Map.get(:result)
+    |> Map.get(:emittedTransactionHash)
   end
 
   defp display(transaction, function) do
@@ -21,6 +21,6 @@ defmodule EarendilCli.Transaction.Logger do
 
   def log(%{function: function}) do
     pool(function)
-      |> display(function)
+    |> display(function)
   end
 end

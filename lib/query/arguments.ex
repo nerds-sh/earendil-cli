@@ -7,20 +7,21 @@ defmodule EarendilCli.Query.Arguments do
   end
 
   def make(task) do
-	  config = Config.get()
+    config = Config.get()
 
     args = [
       "--verbose",
       "contract",
       "query",
       Contract.get(),
-      "--function=#{task.function}",
+      "--function=#{task.function}"
     ]
 
     args = add_step_args(task, args)
 
-    args ++ [
-      "--proxy=#{config.proxy}",
-    ]
+    args ++
+      [
+        "--proxy=#{config.proxy}"
+      ]
   end
 end

@@ -22,9 +22,9 @@ defimpl Protocol, for: Model do
 
   def run(task) do
     start_process(task)
-      |> Task.await(:infinity)
-      |> Result.parse
-      |> Result.register(task.function)
+    |> Task.await(:infinity)
+    |> Result.parse()
+    |> Result.register(task.function)
 
     Utils.apply_delay(task)
     Logger.log(task)

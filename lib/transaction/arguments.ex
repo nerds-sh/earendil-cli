@@ -13,29 +13,30 @@ defmodule EarendilCli.Transaction.Arguments do
 
   defp add_step_args(task, args) do
     args
-      |> add_arguments(task)
-      |> add_value(task)
+    |> add_arguments(task)
+    |> add_value(task)
   end
 
   def make(task) do
-	  config = Config.get()
+    config = Config.get()
 
     args = [
       "contract",
       "call",
       Contract.get(),
-      "--function=#{task.function}",
+      "--function=#{task.function}"
     ]
 
     args = add_step_args(task, args)
 
-    args ++ [
-      "--gas-limit=#{task.gas_limit}",
-      "--proxy=#{config.proxy}",
-      "--recall-nonce",
-      "--send",
-      "--chain=#{config.chain}",
-      "--pem=#{RelativePath.expand(config.pem)}"
-    ]
+    args ++
+      [
+        "--gas-limit=#{task.gas_limit}",
+        "--proxy=#{config.proxy}",
+        "--recall-nonce",
+        "--send",
+        "--chain=#{config.chain}",
+        "--pem=#{RelativePath.expand(config.pem)}"
+      ]
   end
 end

@@ -5,8 +5,8 @@ defmodule EarendilCli.Transaction.Status.Getter do
 
   defp get_tx_hash(called_function) do
     Context.get(called_function)
-			|> Map.get(:result)
-			|> Map.get(:emittedTransactionHash)
+    |> Map.get(:result)
+    |> Map.get(:emittedTransactionHash)
   end
 
   defp make_arguments(function) do
@@ -24,8 +24,8 @@ defmodule EarendilCli.Transaction.Status.Getter do
     task = fn -> System.cmd("erdpy", make_arguments(function)) end
 
     Task.Supervisor.async(EarendilCli.Task.Supervisor, task)
-      |> Task.await(:infinity)
-      |> Result.parse
-      |> extract_transaction
+    |> Task.await(:infinity)
+    |> Result.parse()
+    |> extract_transaction
   end
 end

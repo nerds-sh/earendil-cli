@@ -22,6 +22,6 @@ defmodule EarendilCli.Common.Context do
     match_function = functions_match(function)
 
     get()
-      |> Enum.find(match_function)
+    |> Enum.find(match_function)
   end
 end
