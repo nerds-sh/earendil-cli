@@ -12,6 +12,11 @@ curl https://raw.githubusercontent.com/nerds-sh/earendil-cli/master/install.sh |
 ```
 > Note: Windows is not (and will not be) supported
 
+## Usage
+```sh
+earendil run <path_to_steps_json>
+```
+
 ## Dev Requirements
 * `erdpy` - installed and added to the path
 * `erlang` - installed and added to the path
