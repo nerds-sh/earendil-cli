@@ -1,10 +1,16 @@
 # The Earendil Cli
 Cli app written in Elixir to ease the interaction with Elrond Smart Contracts
 
+## Dependencies
+* `python3` - installed and added to the path
+* `pip3` - installed and added to the path
+* `git` - installed and added to the path
+
 ## Installation
 ```sh
 curl https://raw.githubusercontent.com/nerds-sh/earendil-cli/master/install.sh | sh
 ```
+> Note: Windows is not (and will not be) supported
 
 ## Dev Requirements
 * `erdpy` - installed and added to the path
