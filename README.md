@@ -1,12 +1,17 @@
 # The Earendil Cli
 Cli app written in Elixir to ease the interaction with Elrond Smart Contracts
 
-## Requirements
+## Installation
+```sh
+curl https://raw.githubusercontent.com/nerds-sh/earendil-cli/master/install.sh | sh
+```
+
+## Dev Requirements
 * `erdpy` - installed and added to the path
 * `erlang` - installed and added to the path
 * `elixir` - installed and added to the path
 
-## Running
+## Running locally 
 * Clone this repository
 * Run `mix deps.get`
 * Run `mix earendil run <path_to_steps_json>`
