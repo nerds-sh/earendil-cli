@@ -45,4 +45,14 @@ defmodule EarendilCli.MixProject do
 			}
 		]
 	end
+
+	def release do
+		[
+			earendil: [
+				bakeware: [
+					start_command: "daemon",
+				]
+			]
+		]
+	end
 end
