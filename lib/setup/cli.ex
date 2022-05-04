@@ -1,7 +1,7 @@
 defmodule EarendilCli.Setup.Cli do
   defmacro __using__(_opts) do
     quote do
-      use ExCLI.DSL, mix_task: :earendil, escript: true
+      use ExCLI.DSL, mix_task: :earendil
 
       name("earendil")
       description("Ease of life tool for Elrond SCs")
