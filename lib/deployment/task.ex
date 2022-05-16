@@ -2,6 +2,7 @@ alias EarendilCli.Protocols.Task, as: Protocol
 alias EarendilCli.Deployment.Model, as: Model
 
 defimpl Protocol, for: Model do
+  import ShorterMaps
   alias EarendilCli.Deployment.Builder, as: Builder
   alias EarendilCli.Deployment.Arguments, as: Arguments
   alias EarendilCli.Common.Path, as: RelativePath
@@ -36,7 +37,7 @@ defimpl Protocol, for: Model do
 
     output = parse(task)
     log_result(output)
-    set(output.contract)
+    set(~M{address: output.contract, path: task.path})
     Utils.apply_delay(task)
   end
 end

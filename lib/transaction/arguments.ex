@@ -23,7 +23,7 @@ defmodule EarendilCli.Transaction.Arguments do
     args = [
       "contract",
       "call",
-      Contract.get(),
+      Contract.get().address,
       "--function=#{task.function}"
     ]
 

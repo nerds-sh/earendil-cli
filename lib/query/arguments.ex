@@ -13,7 +13,7 @@ defmodule EarendilCli.Query.Arguments do
       "--verbose",
       "contract",
       "query",
-      Contract.get(),
+      Contract.get().address,
       "--function=#{task.function}"
     ]
 
