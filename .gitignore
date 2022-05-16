@@ -30,6 +30,7 @@ script-*.tar
 .vscode
 .idea
 earendil_cli.iml
+.DS_Store
 
 # Escripts
 earendil_cli

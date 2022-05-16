@@ -6,9 +6,11 @@ defmodule EarendilCli do
   command :run do
     description("Runs a series of steps")
 
-    long_description("""
-      Takes a series of steps declared in a JSON format and runs them
-    """)
+    long_description(
+      """
+        Takes a series of steps declared in a JSON format and runs them
+      """
+    )
 
     argument(:path)
 

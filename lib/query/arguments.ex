@@ -2,26 +2,41 @@ defmodule EarendilCli.Query.Arguments do
   alias EarendilCli.Deployment.ContractAgent, as: Contract
   alias EarendilCli.Config.Agent, as: Config
 
-  defp add_step_args(%{arguments: step_args}, args) do
-    if not is_nil(step_args), do: args ++ ["--arguments=#{step_args}"], else: args
+  defp get_priv() do
+    :code.priv_dir(:earendil_cli)
   end
 
-  def make(task) do
-    config = Config.get()
-
-    args = [
-      "--verbose",
-      "contract",
-      "query",
-      Contract.get().address,
-      "--function=#{task.function}"
+  def cmd() do
+    [
+      cd: "#{get_priv()}/query-decoder",
+      stderr_to_stdout: true,
+      parallelism: true
     ]
+  end
 
-    args = add_step_args(task, args)
+  defp get_env() do
+    case Config.get().chain do
+      "D" -> "devnet"
+      "T" -> "testnet"
+      1 -> "mainnet"
+    end
+  end
 
-    args ++
-      [
-        "--proxy=#{config.proxy}"
-      ]
+  defp get_abi_path(path) do
+    expanded = Path.expand(path)
+
+    Path.wildcard("#{expanded}/output/*.abi.json")
+    |> Enum.at(0)
+  end
+
+  def make(function) do
+    contract = Contract.get()
+    [
+      "index.js",
+      get_abi_path(contract.path),
+      contract.address,
+      get_env(),
+      function
+    ]
   end
 end
