@@ -50,6 +50,7 @@ defmodule EarendilCli.MixProject do
     [
       earendil: [
         bakeware: [
+          compression_level: 18,
           start_command: "daemon"
         ]
       ]
