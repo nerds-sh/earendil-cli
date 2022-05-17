@@ -1,6 +1,6 @@
-defmodule EarendilCli.Deployment.Arguments do
-  alias EarendilCli.Common.Path, as: Path
-  alias EarendilCli.Config.Agent, as: Config
+defmodule Earendil.Deployment.Arguments do
+  alias Earendil.Common.Path, as: Path
+  alias Earendil.Config.Agent, as: Config
 
   defp add_arguments(args, %{arguments: arguments}) do
     if not is_nil(arguments),

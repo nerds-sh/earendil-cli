@@ -1,12 +1,12 @@
-alias EarendilCli.Protocols.Task, as: Protocol
-alias EarendilCli.Test.Model, as: Model
-alias EarendilCli.Test.Context, as: Context
+alias Earendil.Protocols.Task, as: Protocol
+alias Earendil.Test.Model, as: Model
+alias Earendil.Test.Context, as: Context
 
 defimpl Protocol, for: Model do
-  import EarendilCli.Common.Utils
+  import Earendil.Common.Utils
 
   defp make_env() do
-    alias EarendilCli.Common.Context, as: Context
+    alias Earendil.Common.Context, as: Context
 
     __ENV__
   end

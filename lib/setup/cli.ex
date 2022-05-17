@@ -1,4 +1,4 @@
-defmodule EarendilCli.Setup.Cli do
+defmodule Earendil.Setup.Cli do
   defmacro __using__(_opts) do
     quote do
       use ExCLI.DSL, mix_task: :earendil

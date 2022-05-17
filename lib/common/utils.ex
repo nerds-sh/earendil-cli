@@ -1,5 +1,5 @@
-defmodule EarendilCli.Common.Utils do
-  alias EarendilCli.Common.Path, as: RelativePath
+defmodule Earendil.Common.Utils do
+  alias Earendil.Common.Path, as: RelativePath
 
   defp read(path) do
     case File.read(path) do

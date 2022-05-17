@@ -1,5 +1,5 @@
-defmodule EarendilCli.Deployment.Builder do
-  alias EarendilCli.Common.Path, as: RelativePath
+defmodule Earendil.Deployment.Builder do
+  alias Earendil.Common.Path, as: RelativePath
 
   defp make_cmd_options(path) do
     [
@@ -12,7 +12,7 @@ defmodule EarendilCli.Deployment.Builder do
   defp start_process(path) do
     function = fn -> System.cmd("erdpy", ["contract", "build"], make_cmd_options(path)) end
 
-    Task.Supervisor.async(EarendilCli.Task.Supervisor, function)
+    Task.Supervisor.async(Earendil.Task.Supervisor, function)
   end
 
   def run(path) do

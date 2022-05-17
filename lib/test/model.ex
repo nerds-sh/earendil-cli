@@ -1,3 +1,3 @@
-defmodule EarendilCli.Test.Model do
+defmodule Earendil.Test.Model do
   defstruct [:path]
 end

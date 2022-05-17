@@ -1,8 +1,8 @@
-defmodule EarendilCli.Setup do
+defmodule Earendil.Setup do
   defmacro __using__(_opts) do
     quote do
-      import EarendilCli.Setup.Application
-      use EarendilCli.Setup.Cli
+      import Earendil.Setup.Application
+      use Earendil.Setup.Cli
     end
   end
 end

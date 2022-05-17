@@ -1,3 +1,3 @@
-defprotocol EarendilCli.Protocols.Task do
+defprotocol Earendil.Protocols.Task do
   def run(step)
 end

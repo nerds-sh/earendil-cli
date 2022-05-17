@@ -1,4 +1,4 @@
-defmodule EarendilCli.Common.Path do
+defmodule Earendil.Common.Path do
   use Agent
 
   def register(path) do

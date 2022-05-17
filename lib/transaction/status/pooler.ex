@@ -1,7 +1,7 @@
-defmodule EarendilCli.Transaction.Status.Pooler do
+defmodule Earendil.Transaction.Status.Pooler do
   import ShorterMaps
-  alias EarendilCli.Transaction.Status.Getter, as: Getter
-  alias EarendilCli.Common.Utils, as: Utils
+  alias Earendil.Transaction.Status.Getter, as: Getter
+  alias Earendil.Common.Utils, as: Utils
 
   defp repeat(function) do
     Utils.apply_delay(~M{delay: 2000})

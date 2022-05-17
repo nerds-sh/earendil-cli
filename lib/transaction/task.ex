@@ -1,11 +1,11 @@
-alias EarendilCli.Protocols.Task, as: Protocol
-alias EarendilCli.Transaction.Model, as: Model
+alias Earendil.Protocols.Task, as: Protocol
+alias Earendil.Transaction.Model, as: Model
 
 defimpl Protocol, for: Model do
-  alias EarendilCli.Transaction.Arguments, as: Arguments
-  alias EarendilCli.Common.Utils, as: Utils
-  alias EarendilCli.Common.Result, as: Result
-  alias EarendilCli.Transaction.Logger, as: Logger
+  alias Earendil.Transaction.Arguments, as: Arguments
+  alias Earendil.Common.Utils, as: Utils
+  alias Earendil.Common.Result, as: Result
+  alias Earendil.Transaction.Logger, as: Logger
 
   defp make_cmd_options do
     [
@@ -17,7 +17,7 @@ defimpl Protocol, for: Model do
   defp start_process(task) do
     function = fn -> System.cmd("erdpy", Arguments.make(task), make_cmd_options()) end
 
-    Task.Supervisor.async(EarendilCli.Task.Supervisor, function)
+    Task.Supervisor.async(Earendil.Task.Supervisor, function)
   end
 
   def run(task) do

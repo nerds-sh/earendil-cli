@@ -1,7 +1,7 @@
-defmodule EarendilCli.Transaction.Logger do
-  alias EarendilCli.Common.Utils, as: Utils
-  alias EarendilCli.Common.Context, as: Context
-  import EarendilCli.Transaction.Status
+defmodule Earendil.Transaction.Logger do
+  alias Earendil.Common.Utils, as: Utils
+  alias Earendil.Common.Context, as: Context
+  import Earendil.Transaction.Status
 
   defp get_tx_hash(called_function) do
     Context.get(called_function)

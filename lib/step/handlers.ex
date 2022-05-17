@@ -1,9 +1,9 @@
-defmodule EarendilCli.Step.Handlers do
-  alias EarendilCli.Protocols.Task, as: Task
-  alias EarendilCli.Deployment.Model, as: Deployment
-  alias EarendilCli.Transaction.Model, as: Transaction
-  alias EarendilCli.Query.Model, as: Query
-  alias EarendilCli.Test.Model, as: Test
+defmodule Earendil.Step.Handlers do
+  alias Earendil.Protocols.Task, as: Task
+  alias Earendil.Deployment.Model, as: Deployment
+  alias Earendil.Transaction.Model, as: Transaction
+  alias Earendil.Query.Model, as: Query
+  alias Earendil.Test.Model, as: Test
 
   defp run(model, options), do: Task.run(struct(model, options))
 

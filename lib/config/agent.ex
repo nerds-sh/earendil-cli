@@ -1,4 +1,4 @@
-defmodule EarendilCli.Config.Agent do
+defmodule Earendil.Config.Agent do
   use Agent
 
   def set(value) do

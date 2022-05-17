@@ -1,5 +1,5 @@
-defmodule EarendilCli.Common.Parser do
-  import EarendilCli.Common.Utils
+defmodule Earendil.Common.Parser do
+  import Earendil.Common.Utils
 
   defp decode(json, mapper) do
     case Poison.decode(json, as: mapper.(), keys: :atoms) do

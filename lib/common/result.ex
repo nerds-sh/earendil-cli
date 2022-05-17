@@ -1,5 +1,5 @@
-defmodule EarendilCli.Common.Result do
-  alias EarendilCli.Common.Context, as: Context
+defmodule Earendil.Common.Result do
+  alias Earendil.Common.Context, as: Context
 
   defp filter(array) do
     not_info = fn element -> not String.contains?(element, "INFO") end

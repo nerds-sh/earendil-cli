@@ -1,7 +1,7 @@
-defmodule EarendilCli.Transaction.Status.Getter do
-  alias EarendilCli.Common.Context, as: Context
-  alias EarendilCli.Common.Result, as: Result
-  alias EarendilCli.Config.Agent, as: Config
+defmodule Earendil.Transaction.Status.Getter do
+  alias Earendil.Common.Context, as: Context
+  alias Earendil.Common.Result, as: Result
+  alias Earendil.Config.Agent, as: Config
 
   defp get_tx_hash(called_function) do
     Context.get(called_function)
@@ -23,7 +23,7 @@ defmodule EarendilCli.Transaction.Status.Getter do
   def get(function) do
     task = fn -> System.cmd("erdpy", make_arguments(function)) end
 
-    Task.Supervisor.async(EarendilCli.Task.Supervisor, task)
+    Task.Supervisor.async(Earendil.Task.Supervisor, task)
     |> Task.await(:infinity)
     |> Result.parse()
     |> extract_transaction

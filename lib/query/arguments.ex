@@ -1,9 +1,9 @@
-defmodule EarendilCli.Query.Arguments do
-  alias EarendilCli.Deployment.ContractAgent, as: Contract
-  alias EarendilCli.Config.Agent, as: Config
+defmodule Earendil.Query.Arguments do
+  alias Earendil.Deployment.ContractAgent, as: Contract
+  alias Earendil.Config.Agent, as: Config
 
   defp get_priv() do
-    :code.priv_dir(:earendil_cli)
+    :code.priv_dir(:earendil)
   end
 
   def cmd() do

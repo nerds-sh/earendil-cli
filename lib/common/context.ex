@@ -1,4 +1,4 @@
-defmodule EarendilCli.Common.Context do
+defmodule Earendil.Common.Context do
   import ShorterMaps
   use Agent
 

@@ -1,4 +1,4 @@
-defmodule EarendilCli.Deployment.ContractAgent do
+defmodule Earendil.Deployment.ContractAgent do
   use Agent
 
   def set(value) do

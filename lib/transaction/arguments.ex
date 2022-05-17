@@ -1,7 +1,7 @@
-defmodule EarendilCli.Transaction.Arguments do
-  alias EarendilCli.Deployment.ContractAgent, as: Contract
-  alias EarendilCli.Common.Path, as: RelativePath
-  alias EarendilCli.Config.Agent, as: Config
+defmodule Earendil.Transaction.Arguments do
+  alias Earendil.Deployment.ContractAgent, as: Contract
+  alias Earendil.Common.Path, as: RelativePath
+  alias Earendil.Config.Agent, as: Config
 
   defp add_arguments(args, %{arguments: arguments}) do
     if not is_nil(arguments), do: args ++ ["--arguments=#{arguments}"], else: args

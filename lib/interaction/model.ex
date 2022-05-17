@@ -1,4 +1,4 @@
-defmodule EarendilCli.Interaction.Model do
+defmodule Earendil.Interaction.Model do
   @derive [Poison.Encoder]
 
   defstruct [:emittedTransactionHash, :contractAddress]

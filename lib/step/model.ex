@@ -1,4 +1,4 @@
-defmodule EarendilCli.Step.Module do
+defmodule Earendil.Step.Module do
   @derive [Poison.Encoder]
 
   defstruct [:type, :options]

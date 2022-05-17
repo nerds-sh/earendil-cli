@@ -1,14 +1,14 @@
-alias EarendilCli.Protocols.Task, as: Protocol
-alias EarendilCli.Deployment.Model, as: Model
+alias Earendil.Protocols.Task, as: Protocol
+alias Earendil.Deployment.Model, as: Model
 
 defimpl Protocol, for: Model do
   import ShorterMaps
-  alias EarendilCli.Deployment.Builder, as: Builder
-  alias EarendilCli.Deployment.Arguments, as: Arguments
-  alias EarendilCli.Common.Path, as: RelativePath
-  alias EarendilCli.Common.Utils, as: Utils
-  import EarendilCli.Interaction.Parser
-  import EarendilCli.Deployment.ContractAgent
+  alias Earendil.Deployment.Builder, as: Builder
+  alias Earendil.Deployment.Arguments, as: Arguments
+  alias Earendil.Common.Path, as: RelativePath
+  alias Earendil.Common.Utils, as: Utils
+  import Earendil.Interaction.Parser
+  import Earendil.Deployment.ContractAgent
 
   defp make_cmd_options(path) do
     [
@@ -21,7 +21,7 @@ defimpl Protocol, for: Model do
   defp start_process(task) do
     function = fn -> System.cmd("erdpy", Arguments.make(task), make_cmd_options(task.path)) end
 
-    Task.Supervisor.async(EarendilCli.Task.Supervisor, function)
+    Task.Supervisor.async(Earendil.Task.Supervisor, function)
   end
 
   defp log_result(%{contract: contract, hash: hash}) do

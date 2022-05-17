@@ -1,8 +1,8 @@
-defmodule EarendilCli.Step.Parser do
+defmodule Earendil.Step.Parser do
   import ShorterMaps
-  import EarendilCli.Common.Parser
-  alias EarendilCli.Config.Model, as: Config
-  alias EarendilCli.Step.Model, as: Step
+  import Earendil.Common.Parser
+  alias Earendil.Config.Model, as: Config
+  alias Earendil.Step.Model, as: Step
 
   def parse(path) do
     mapper = fn -> ~M{config: Config, steps: [Step]} end

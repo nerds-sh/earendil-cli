@@ -1,4 +1,4 @@
-defmodule EarendilCli.Config.Model do
+defmodule Earendil.Config.Model do
   @derive [Poison.Encoder]
 
   defstruct [:pem, :proxy, :chain]

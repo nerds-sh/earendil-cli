@@ -1,6 +1,6 @@
-defmodule EarendilCli.Query.Logger do
-  alias EarendilCli.Common.Utils, as: Utils
-  alias EarendilCli.Common.Context, as: Context
+defmodule Earendil.Query.Logger do
+  alias Earendil.Common.Utils, as: Utils
+  alias Earendil.Common.Context, as: Context
 
   defp get_result(function), do: Context.get(function)
 

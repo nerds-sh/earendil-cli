@@ -1,17 +1,17 @@
-alias EarendilCli.Protocols.Task, as: Protocol
-alias EarendilCli.Query.Model, as: Model
+alias Earendil.Protocols.Task, as: Protocol
+alias Earendil.Query.Model, as: Model
 
 defimpl Protocol, for: Model do
-  alias EarendilCli.Query.Dependencies, as: Dependencies
-  alias EarendilCli.Query.Arguments, as: Arguments
-  alias EarendilCli.Query.Logger, as: Logger
-  alias EarendilCli.Common.Utils, as: Utils
-  alias EarendilCli.Common.Result, as: Result
+  alias Earendil.Query.Dependencies, as: Dependencies
+  alias Earendil.Query.Arguments, as: Arguments
+  alias Earendil.Query.Logger, as: Logger
+  alias Earendil.Common.Utils, as: Utils
+  alias Earendil.Common.Result, as: Result
 
   defp start_process(task) do
     function = fn -> System.cmd("node", Arguments.make(task.function), Arguments.cmd()) end
 
-    Task.Supervisor.async(EarendilCli.Task.Supervisor, function)
+    Task.Supervisor.async(Earendil.Task.Supervisor, function)
   end
 
   def run(task) do
