@@ -1,4 +1,4 @@
-defmodule Earendil do
+defmodule Earendil.Cli do
   import Earendil.Step.Parser
   alias Earendil.Common.Path, as: Path
   use Earendil.Setup
@@ -23,3 +23,5 @@ defmodule Earendil do
     end
   end
 end
+
+ExCLI.run(Earendil.Cli)

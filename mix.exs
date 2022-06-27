@@ -9,7 +9,7 @@ defmodule Earendil.MixProject do
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       package: package(),
-      escript: [main_module: Earendil],
+      escript: [main_module: Earendil.Cli],
       releases: [
         earendil: [
           steps: [:assemble, &Bakeware.assemble/1],
@@ -22,8 +22,7 @@ defmodule Earendil.MixProject do
 
   def application do
     [
-      extra_applications: [:logger],
-      mod: {Earendil.Main, []}
+      extra_applications: [:logger]
     ]
   end
 
