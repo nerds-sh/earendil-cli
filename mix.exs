@@ -9,6 +9,7 @@ defmodule Earendil.MixProject do
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       package: package(),
+      escript: [main_module: Earendil],
       releases: [
         earendil: [
           steps: [:assemble, &Bakeware.assemble/1],
